@@ -7,9 +7,8 @@ from django.conf import settings
 
 apipatterns = [
     path('items/', include('items.urls')),
-    # path('reviews/', include('reviews.urls')),
+    path('reviews/', include('reviews.urls')),
 ]
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
