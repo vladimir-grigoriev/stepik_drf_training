@@ -25,4 +25,5 @@ class Command(BaseCommand):
             if created:
                 obj.set_password(user['password'])
                 obj.save()
+        
         return
