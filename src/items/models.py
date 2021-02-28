@@ -12,7 +12,7 @@ class Item(models.Model):
     )
 
     image = models.ImageField(
-        verbose_name='Картинка'
+        verbose_name='Картинка',
     )
 
     weight = models.PositiveSmallIntegerField(
