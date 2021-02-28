@@ -27,7 +27,9 @@ MY_APPS = [
     'users',
 ]
 
-THIRD_PART_APPS = []
+THIRD_PART_APPS = [
+    'rest_framework',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',

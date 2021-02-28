@@ -5,7 +5,7 @@ Stepik DRF Lessons
 1st week task
 -------------
 
-1) Making models;   `[DONE]`
-1) Import data;
-1) Getting product by pk;
+1) Making models;    `[DONE]`
+1) Import data;    `[DONE]`
+1) Getting product by pk;    `[DONE]`
 1) Getting reviews;
