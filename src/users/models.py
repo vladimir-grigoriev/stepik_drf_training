@@ -8,4 +8,4 @@ class User(AbstractUser):
     adress = models.CharField(verbose_name="Адрес", max_length=50)
 
     def __str__(self):
-        return f"Пользователь №{self.pk}"
+        return f"User №{self.pk}"

@@ -10,7 +10,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         response = requests.get(url=URL).json()
         for user in response:
-            obj, created = User.objects.get_or_create(
+            obj, created = User.objects.update_or_create(
                 id=user["id"] + 1,
                 defaults={
                     "email": user["email"],

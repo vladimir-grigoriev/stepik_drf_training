@@ -14,33 +14,20 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         response = requests.get(url=URL).json()
         for review in response:
-            a = review["published_at"].split("-")
-            print(a)
+            rev_created = datetime.datetime.strptime(review["created_at"], '%Y-%m-%d')
+            if review["published_at"]:
+                rev_published = datetime.datetime.strptime(review["published_at"], '%Y-%m-%d')
+            else:
+                rev_published = '2021-01-01'
+
             obj, created = Review.objects.get_or_create(
                 id=review["id"],
                 defaults={
                     "author": User.objects.get(id=review["author"]),
                     "text": review["content"],
-                    "created_at": datetime.datetime(
-                        year=int(review["created_at"].split("-")[0]),
-                        month=int(review["created_at"].split("-")[1]),
-                        day=int(review["created_at"].split("-")[2]),
-                        hour=0,
-                        minute=0,
-                        second=0,
-                        microsecond=0,
-                    ),
-                    "published_at": datetime.datetime(
-                        year=int(review["published_at"].split("-")[0]),
-                        month=int(review["published_at"].split("-")[1]),
-                        day=int(review["published_at"].split("-")[2]),
-                        hour=0,
-                        minute=0,
-                        second=0,
-                        microsecond=0,
-                    ),
-                    "status": review["status"][:3].upper(),
+                    "created_at": rev_created if rev_created != '' else '2021-01-01',
+                    "published_at": rev_published if rev_published != '' else '2021-01-01',
+                    "status": review["status"],
                 },
             )
-
         return
