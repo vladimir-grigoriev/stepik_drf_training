@@ -7,15 +7,12 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = (
         *UserAdmin.fieldsets,
         (
-            'Custom Field Heading',
+            "Custom Field Heading",
             {
-                'fields': (
-                    'middle_name',
-                    'phone',
-                    'adress'
-                ),
+                "fields": ("middle_name", "phone", "adress"),
             },
         ),
     )
+
 
 admin.site.register(User, CustomUserAdmin)

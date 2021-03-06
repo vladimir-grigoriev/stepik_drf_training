@@ -15,14 +15,49 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Review',
+            name="Review",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.TextField(verbose_name='Текст отзыва')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')),
-                ('published_at', models.DateTimeField(auto_now=True, verbose_name='Дата публикации')),
-                ('status', models.CharField(choices=[('MOD', 'На модерации'), ('PUB', 'Опубликовано'), ('DEN', 'Отклонено')], default='MOD', max_length=3, verbose_name='Статус')),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='reviews', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("text", models.TextField(verbose_name="Текст отзыва")),
+                (
+                    "created_at",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Дата создания"
+                    ),
+                ),
+                (
+                    "published_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Дата публикации"),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("MOD", "На модерации"),
+                            ("PUB", "Опубликовано"),
+                            ("DEN", "Отклонено"),
+                        ],
+                        default="MOD",
+                        max_length=3,
+                        verbose_name="Статус",
+                    ),
+                ),
+                (
+                    "author",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="reviews",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
