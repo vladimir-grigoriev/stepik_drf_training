@@ -21,7 +21,7 @@ class Item(models.Model):
 
     price = models.DecimalField(
         verbose_name='Цена в рублях',
-        max_digits=6,
+        max_digits=19,
         decimal_places=2
     )
 
