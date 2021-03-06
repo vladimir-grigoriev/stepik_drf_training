@@ -1,3 +1,4 @@
+import os
 from django.core.management.base import BaseCommand
 from items.models import Item
 from django.conf import settings
@@ -10,7 +11,6 @@ URL = "https://raw.githubusercontent.com/stepik-a-w/drf-project-boxes/master/foo
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         response = requests.get(url=URL).json()
-
         for item in response:
             obj, created = Item.objects.update_or_create(
                 id=item["id"],
@@ -21,13 +21,23 @@ class Command(BaseCommand):
                     "price": item["price"],
                 },
             )
+
             if created:
                 url = item["image"]
                 filename = url.split("/")[-1]
                 r = requests.get(url)
-                with open(str(settings.MEDIA_ROOT) + "/" + filename, mode="wb") as f:
-                    f.write(r.content)
-                obj.image = filename
+                try:
+                    with open(
+                        str(settings.MEDIA_ROOT) + "/" + "items/" + filename, mode="wb"
+                    ) as f:
+                        f.write(r.content)
+                except FileNotFoundError:
+                    os.makedirs(str(settings.MEDIA_ROOT) + "/items/")
+                    with open(
+                        str(settings.MEDIA_ROOT) + "/" + "items/" + filename, mode="wb"
+                    ) as f:
+                        f.write(r.content)
+                obj.image = "items/" + filename
                 obj.save()
 
         return

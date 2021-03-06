@@ -10,6 +10,7 @@ class Item(models.Model):
 
     image = models.ImageField(
         verbose_name="Картинка",
+        upload_to="items/"
     )
 
     weight = models.PositiveSmallIntegerField(verbose_name="Вес в граммах")
