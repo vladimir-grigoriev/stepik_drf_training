@@ -22,6 +22,11 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2
+}
+
 MY_APPS = [
     "items",
     "reviews",
@@ -30,6 +35,8 @@ MY_APPS = [
 
 THIRD_PART_APPS = [
     "rest_framework",
+    "drf_yasg",
+    "django_filters",
 ]
 
 INSTALLED_APPS = (

@@ -1,22 +1,15 @@
-from rest_framework.decorators import api_view
-from rest_framework.generics import get_object_or_404
-from rest_framework.response import Response
+from rest_framework.viewsets import ReadOnlyModelViewSet
+from django_filters import rest_framework as filters
+from rest_framework.filters import OrderingFilter
 
 from .models import Item
+from .serializers import ItemSerializer
+from .filters import ItemFilter
 
 
-@api_view(http_method_names=["GET"])
-def current_item_view(request, pk):
-    result = get_object_or_404(Item, pk=pk)
-    print(dir(result.image))
-    print(result.image.url)
-    return Response(
-        {
-            "id": result.id,
-            "title": result.title,
-            "description": result.description,
-            "image": result.image.url,
-            "weight": result.weight,
-            "price": result.price,
-        }
-    )
+class ItemView(ReadOnlyModelViewSet):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    filter_backends = [filters.DjangoFilterBackend, OrderingFilter]
+    filterset_class = ItemFilter
+    ordering_fields = ['id', 'title', 'weight', 'price']
