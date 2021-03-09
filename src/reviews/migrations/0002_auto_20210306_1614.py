@@ -6,13 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('reviews', '0001_initial'),
+        ("reviews", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='review',
-            name='status',
-            field=models.CharField(choices=[('new', 'Moderation'), ('published', 'Published'), ('hidden', 'Denied')], default='new', max_length=9, verbose_name='Статус'),
+            model_name="review",
+            name="status",
+            field=models.CharField(
+                choices=[
+                    ("new", "Moderation"),
+                    ("published", "Published"),
+                    ("hidden", "Denied"),
+                ],
+                default="new",
+                max_length=9,
+                verbose_name="Статус",
+            ),
         ),
     ]

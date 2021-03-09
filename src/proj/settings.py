@@ -23,18 +23,28 @@ ALLOWED_HOSTS = []
 # Application definition
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 2
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 2,
 }
 
 MY_APPS = [
     "items",
     "reviews",
     "users",
+    "carts",
 ]
 
 THIRD_PART_APPS = [
     "rest_framework",
+    "rest_framework.authtoken",
     "drf_yasg",
     "django_filters",
 ]
@@ -47,7 +57,9 @@ INSTALLED_APPS = (
         "django.contrib.sessions",
         "django.contrib.messages",
         "django.contrib.staticfiles",
-    ] + MY_APPS + THIRD_PART_APPS
+    ]
+    + MY_APPS
+    + THIRD_PART_APPS
 )
 
 MIDDLEWARE = [

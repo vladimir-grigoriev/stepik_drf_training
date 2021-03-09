@@ -12,4 +12,4 @@ class ItemView(ReadOnlyModelViewSet):
     serializer_class = ItemSerializer
     filter_backends = [filters.DjangoFilterBackend, OrderingFilter]
     filterset_class = ItemFilter
-    ordering_fields = ['id', 'title', 'weight', 'price']
+    ordering_fields = ["id", "title", "weight", "price"]

@@ -12,13 +12,9 @@ class Review(models.Model):
 
     text = models.TextField(verbose_name="Текст отзыва", blank=False, null=False)
 
-    created_at = models.DateTimeField(
-        verbose_name="Дата создания", auto_now_add=True
-    )
+    created_at = models.DateTimeField(verbose_name="Дата создания", auto_now_add=True)
 
-    published_at = models.DateTimeField(
-        verbose_name="Дата публикации", auto_now=True
-    )
+    published_at = models.DateTimeField(verbose_name="Дата публикации", auto_now=True)
 
     status = models.CharField(
         verbose_name="Статус",

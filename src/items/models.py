@@ -8,10 +8,7 @@ class Item(models.Model):
         verbose_name="Описание",
     )
 
-    image = models.ImageField(
-        verbose_name="Картинка",
-        upload_to="items/"
-    )
+    image = models.ImageField(verbose_name="Картинка", upload_to="items/")
 
     weight = models.PositiveSmallIntegerField(verbose_name="Вес в граммах")
 
