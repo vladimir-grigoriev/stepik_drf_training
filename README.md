@@ -28,13 +28,25 @@ Stepik DRF Lessons
     ```
     pip install -r requirements.txt
     ```
-5. Run commands
+5. Move to src directory
     ```
-    python src/manage.py migrate
+    cd src/
     ```
-6. For adding data run
+6. Create a .env file with field
     ```
-    python src/manage.py add_items
-    python src/manage.py add_users
-    python src/manage.py add_reviews
+    SECRET_KEY='somerandomsymbols'
+    ```
+7. Run command
+    ```
+    python manage.py migrate
+    ```
+8. Create a superuser
+    ```
+    python manage.py createsuperuser
+    ```
+9. For adding data run
+    ```
+    python manage.py add_items
+    python manage.py add_users
+    python manage.py add_reviews
     ```
